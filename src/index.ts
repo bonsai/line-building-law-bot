@@ -54,9 +54,10 @@ class MCPClient extends EventEmitter {
   private transport: any = null
 
   async initialize() {
-    // Spawn the MCP server process
-    const mcpProcess = spawn('node', [
-      'C:/Users/dance/Documents/MEGA/building-standards-act-mcp/dist/index.js'
+    // Spawn the MCP server process using npx
+    const mcpProcess = spawn('npx', [
+      '-y',
+      'building-standards-act-mcp'
     ], {
       stdio: ['pipe', 'pipe', 'pipe']
     })

@@ -1,11 +1,11 @@
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/line-building-law-bot:$SHORT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/gen-lang-client-0315818888/line-building-law-bot:latest', '.']
 
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/line-building-law-bot:$SHORT_SHA']
+    args: ['push', 'gcr.io/gen-lang-client-0315818888/line-building-law-bot:latest']
 
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -15,16 +15,14 @@ steps:
       - 'deploy'
       - 'line-building-law-bot'
       - '--image'
-      - 'gcr.io/$PROJECT_ID/line-building-law-bot:$SHORT_SHA'
+      - 'gcr.io/gen-lang-client-0315818888/line-building-law-bot:latest'
       - '--region'
       - 'asia-northeast1'
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
-      - '--set-env-vars'
-      - 'PORT=8080'
       - '--set-secrets'
       - 'LINE_CHANNEL_SECRET=LINE_CHANNEL_SECRET:latest,LINE_CHANNEL_ACCESS_TOKEN=LINE_CHANNEL_ACCESS_TOKEN:latest'
 
 images:
-  - 'gcr.io/$PROJECT_ID/line-building-law-bot:$SHORT_SHA'
+  - 'gcr.io/gen-lang-client-0315818888/line-building-law-bot:latest'

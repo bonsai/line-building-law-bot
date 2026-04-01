@@ -2,6 +2,9 @@
 FROM oven/bun:1 AS base
 WORKDIR /app
 
+# Install Node.js for npx (MCP server)
+RUN apt-get update && apt-get install -y nodejs npm
+
 # Install dependencies
 FROM base AS install
 COPY package.json bun.lock* ./
