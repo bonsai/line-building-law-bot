@@ -1,0 +1,21 @@
+{
+  "name": "line-building-law-bot",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.12",
+    "@line/bot-sdk": "^10.6.0",
+    "hono": "^4.12.9"
+  }
+}
